@@ -93,7 +93,7 @@ if archivo:
                 )
                 
                 fila_total = pl.DataFrame({
-                    COL_FECHA: ["     *TOTAL*    "], # Le ponemos negritas en markdown al texto TOTAL
+                    COL_FECHA: ["     *TOTAL*   "], # Le ponemos negritas en markdown al texto TOTAL
                     "Ingreso Diario": [total_final]
                 })
                 
@@ -113,14 +113,14 @@ if archivo:
                 st.caption("✨ Toca el ícono en la esquina superior derecha del recuadro para copiar la tabla (Formato Markdown):")
                 
                 # Construimos la tabla Markdown manualmente fila por fila
-                lineas_md = ["|      Fecha      |    Ingreso   |", "| ------------------- | ---------------  |"]
+                lineas_md = ["|      Fecha     |   Ingreso  |", "| ---------- | -------- |"]
                 for row in resumen_diario_con_total.iter_rows():
                     fecha_str = str(row[0])
                     # Le damos formato de moneda (ej. S/.1,250.00)
                     monto_str = f"S/.{row[1]:,.2f}"
                     
                     # Si es la fila final, ponemos el monto en negritas también
-                    if fecha_str == "     *TOTAL*    ":
+                    if fecha_str == "     *TOTAL*   ":
                         monto_str = f"*{monto_str}*"
                         
                     lineas_md.append(f"| {fecha_str} | {monto_str} |")
